@@ -1,0 +1,364 @@
+<style>
+  body .accordion-item p, body .accordion-item h4, body .accordion-item h3 {
+    color: var(--color-bg) !important
+  }
+</style>
+
+
+<div class="custom-feature-accordion tw-py-16 tw-px-4 md:tw-px-8">
+  <div class="tw-max-w-7xl tw-mx-auto">
+    
+    <!-- Desktop Layout: Image Left, Text Right -->
+    <!-- Mobile Layout: Text Top, Image Bottom (flex-reverse) -->
+    <div class="tw-flex tw-flex-col-reverse md:tw-flex-row tw-gap-8 tw-items-stretch">
+      
+      <!-- Image Card -->
+      <div class="tw-flex-1 tw-relative tw-min-h-[400px] md:tw-min-h-[500px] br">
+        {% for block in section.blocks %}
+          {% if block.type == 'accordion_item' %}
+            <div 
+              class="accordion-image tw-absolute tw-inset-0 tw-w-full tw-h-full tw-transition-opacity tw-duration-500 br tw-overflow-hidden{% if forloop.first %} tw-opacity-100{% else %} tw-opacity-0{% endif %}"
+              data-tab="{{ forloop.index0 }}"
+            >
+              {% if block.settings.image %}
+                {{ block.settings.image | image_url: width: 800 | image_tag: 
+                   class: 'tw-w-full tw-h-full tw-object-cover', 
+                   loading: 'lazy',
+                   alt: block.settings.title }}
+              {% else %}
+                <div class="tw-w-full tw-h-full tw-bg-gray-200 tw-flex tw-items-center tw-justify-center">
+                  <span class="tw-text-gray-500">{{ 'Image for ' | append: block.settings.title }}</span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Text Card -->
+      <div class="tw-flex-1 tw-p-8 md:tw-p-12 br" style="background-color: var(--color-contrast-higher);">
+        <div class="accordion-container">
+          
+          {% for block in section.blocks %}
+            {% if block.type == 'accordion_item' %}
+              <div 
+                class="accordion-item tw-mb-8 tw-cursor-pointer tw-relative"
+                data-tab="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
+                
+                <!-- Label Element (for inactive state) -->
+                <div class="accordion-label tw-cursor-pointer{% if forloop.first %} tw-hidden{% else %} tw-block{% endif %}">
+                  <h3 class="label-text tw-text-2xl md:tw-text-3xl tw-font-medium tw-border-b tw-border-gray-400 tw-pb-4" style="color: var(--color-bg);">{{ block.settings.title }}</h3>
+                </div>
+
+                <!-- Title Element (for active state) -->
+                <div class="accordion-title-active{% unless forloop.first %} tw-hidden{% endunless %}">
+                  <h4 class="title-text tw-text-3xl md:tw-text-4xl tw-font-bold tw-mb-6" style="color: var(--color-bg);">{{ block.settings.title }}</h4>
+                  
+                  <!-- Description (part of active title element) -->
+                  <div class="accordion-description tw-overflow-hidden">
+                    <p class="tw-text-base md:tw-text-lg tw-leading-relaxed" style="color: var(--color-bg);">
+                      {{ block.settings.description }}
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Wait for GSAP to be loaded
+  function waitForGSAP(callback) {
+    if (typeof gsap !== 'undefined' && typeof gsap.timeline === 'function') {
+      callback();
+    } else {
+      setTimeout(() => waitForGSAP(callback), 100);
+    }
+  }
+
+  function init() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    const accordionImages = document.querySelectorAll('.accordion-image');
+    let currentTab = 0;
+    let autoRotateInterval;
+    let isAnimating = false;
+
+    // Function to split text into animated spans
+    function splitTextForAnimation(element) {
+      const text = element.textContent;
+      const chars = text.split('');
+      element.innerHTML = chars.map(char => 
+        char === ' ' ? '<span class="char">&nbsp;</span>' : `<span class="char">${char}</span>`
+      ).join('');
+      return element.querySelectorAll('.char');
+    }
+
+    // Function to restore normal text
+    function restoreNormalText(element, originalText) {
+      element.innerHTML = originalText;
+    }
+
+    // Store original text content for all elements
+    const originalTexts = new Map();
+    accordionItems.forEach((item, index) => {
+      const labelText = item.querySelector('.label-text');
+      const titleText = item.querySelector('.title-text');
+      
+      if (labelText) originalTexts.set(labelText, labelText.textContent);
+      if (titleText) originalTexts.set(titleText, titleText.textContent);
+    });
+
+    // Initialize - ensure all text is visible in normal form
+    // Don't split text initially, keep it as normal readable text
+
+    // Function to switch to a specific tab with GSAP animations
+    function switchTab(tabIndex) {
+      if (isAnimating || tabIndex === currentTab) return;
+      
+      isAnimating = true;
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // Restore normal text after animations complete
+          accordionItems.forEach((item, index) => {
+            const labelText = item.querySelector('.label-text');
+            const titleText = item.querySelector('.title-text');
+            
+            if (labelText && originalTexts.has(labelText)) {
+              restoreNormalText(labelText, originalTexts.get(labelText));
+            }
+            if (titleText && originalTexts.has(titleText)) {
+              restoreNormalText(titleText, originalTexts.get(titleText));
+            }
+          });
+          
+          isAnimating = false;
+          currentTab = tabIndex;
+        }
+      });
+
+      // Animate out current active item
+      if (currentTab !== tabIndex) {
+        const currentItem = accordionItems[currentTab];
+        const currentTitleActive = currentItem.querySelector('.accordion-title-active');
+        const currentTitleText = currentItem.querySelector('.title-text');
+        const currentDescription = currentItem.querySelector('.accordion-description');
+        const currentLabel = currentItem.querySelector('.accordion-label');
+
+        // Split current active title for animation
+        const currentTitleChars = splitTextForAnimation(currentTitleText);
+
+        // Fade out current active title with letter animation
+        tl.to(currentTitleChars, {
+          duration: 0.3,
+          opacity: 0,
+          y: -10,
+          stagger: 0.02,
+          ease: "power2.in"
+        }, 0);
+
+        // Fade out description
+        tl.to(currentDescription, {
+          duration: 0.2,
+          opacity: 0,
+          ease: "power2.in"
+        }, 0.1);
+
+        // Switch display states - hide active, show label
+        tl.set(currentTitleActive, {
+          display: "none"
+        }, 0.4);
+
+        tl.set(currentLabel, {
+          display: "block"
+        }, 0.4);
+      }
+
+      // Animate in new active item
+      const newItem = accordionItems[tabIndex];
+      const newTitleActive = newItem.querySelector('.accordion-title-active');
+      const newTitleText = newItem.querySelector('.title-text');
+      const newDescription = newItem.querySelector('.accordion-description');
+      const newLabel = newItem.querySelector('.accordion-label');
+
+      // Switch display states - hide label, show active
+      tl.set(newLabel, {
+        display: "none"
+      }, 0.5);
+
+      tl.set(newTitleActive, {
+        display: "block"
+      }, 0.5);
+
+      // Split new title text for animation
+      tl.call(() => {
+        const newTitleChars = splitTextForAnimation(newTitleText);
+        
+        // Set initial state for animation
+        gsap.set(newTitleChars, {
+          opacity: 0,
+          y: 20
+        });
+
+        // Animate in new title with letter animation
+        gsap.to(newTitleChars, {
+          duration: 0.4,
+          opacity: 1,
+          y: 0,
+          stagger: 0.03,
+          ease: "power2.out"
+        });
+      }, [], 0.6);
+
+      // Animate in description
+      tl.fromTo(newDescription, {
+        opacity: 0
+      }, {
+        duration: 0.4,
+        opacity: 1,
+        ease: "power2.out"
+      }, 0.8);
+
+      // Update images
+      accordionImages.forEach((image, index) => {
+        if (index === tabIndex) {
+          tl.to(image, {
+            duration: 0.5,
+            opacity: 1,
+            ease: "power2.inOut"
+          }, 0.3);
+        } else if (index === currentTab) {
+          tl.to(image, {
+            duration: 0.5,
+            opacity: 0,
+            ease: "power2.inOut"
+          }, 0);
+        }
+      });
+    }
+
+    // Auto-rotate function
+    function startAutoRotate() {
+      autoRotateInterval = setInterval(() => {
+        if (!isAnimating) {
+          const nextTab = (currentTab + 1) % accordionItems.length;
+          switchTab(nextTab);
+        }
+      }, 4000); // 4 seconds to allow animations to complete
+    }
+
+    // Manual click handlers
+    accordionItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        if (isAnimating) return;
+        
+        clearInterval(autoRotateInterval);
+        switchTab(index);
+        
+        // Restart auto-rotation after 6 seconds
+        setTimeout(() => {
+          startAutoRotate();
+        }, 6000);
+      });
+    });
+
+    // Start auto-rotation
+    startAutoRotate();
+
+    // Pause on hover
+    const accordionContainer = document.querySelector('.accordion-container');
+    if (accordionContainer) {
+      accordionContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoRotateInterval);
+      });
+
+      accordionContainer.addEventListener('mouseleave', () => {
+        if (!isAnimating) {
+          startAutoRotate();
+        }
+      });
+    }
+  }
+
+  // Wait for GSAP to load, then initialize
+  waitForGSAP(init);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Feature Accordion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description", 
+          "label": "Description",
+          "default": "Add your feature description here."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Feature Accordion",
+      "blocks": [
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Turns hunger off — the natural way.",
+            "description": "Berberine activates your body's metabolic switch (AMPK), improving insulin sensitivity and stabilizing blood sugar — so your appetite stays calm and controlled all day."
+          }
+        },
+        {
+          "type": "accordion_item", 
+          "settings": {
+            "title": "Doctor-formulated for real results.",
+            "description": "Our formula is backed by clinical research and developed by medical professionals to ensure maximum effectiveness and safety."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Lose cravings, not energy.",
+            "description": "Unlike other solutions that leave you feeling drained, our approach maintains your natural energy levels while eliminating unwanted cravings."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
