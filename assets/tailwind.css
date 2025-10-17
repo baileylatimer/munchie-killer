@@ -752,6 +752,10 @@ video {
   padding-top: 3rem;
 }
 
+.tw-pt-16 {
+  padding-top: 4rem;
+}
+
 .tw-text-left {
   text-align: left;
 }
@@ -845,6 +849,10 @@ video {
 
   .lg\:tw-pb-20 {
     padding-bottom: 5rem;
+  }
+
+  .lg\:tw-pt-0 {
+    padding-top: 0px;
   }
 }
 

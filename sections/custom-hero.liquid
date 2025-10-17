@@ -60,7 +60,7 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    max-width: 1440px;
+
     margin: 0 auto;
     padding: 0 40px;
   }
@@ -140,7 +140,7 @@
 
     .custom-hero__container {
       height: 100vh;
-      align-items: flex-end;
+      align-items: flex-start;
       padding-bottom: 40px;
     }
 
@@ -159,8 +159,7 @@
     }
 
     .custom-hero__description {
-      margin: 0 auto 24px;
-      max-width: 320px;
+
     }
 
     .custom-hero__button {
@@ -348,7 +347,7 @@
     {% endif %}
   </div>
 
-  <div class="custom-hero__container">
+  <div class="custom-hero__container tw-pt-16 lg:tw-pt-0">
     <div class="custom-hero__content">
       <div class="custom-hero__content-inner">
         {% if section.settings.overline != blank %}
@@ -356,11 +355,11 @@
         {% endif %}
 
         {% if section.settings.headline != blank %}
-          <h1 class="custom-hero__headline tw-mb-6">{{ section.settings.headline }}</h1>
+          <h1 class="custom-hero__headline tw-mb-4">{{ section.settings.headline }}</h1>
         {% endif %}
 
         {% if section.settings.description != blank %}
-          <p class="custom-hero__description tw-mb-4 h4">{{ section.settings.description }}</p>
+          <p class="custom-hero__description tw-mb-8 h4">{{ section.settings.description }}</p>
         {% endif %}
 
         {% if section.settings.button_label != blank and section.settings.button_url != blank %}

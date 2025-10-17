@@ -835,7 +835,7 @@ letter-spacing: var(--font-h5--letter-spacing) !important;
 }
 
 header {
-  border-bottom: 1px solid var(--color-contrast-higher);
+
 }
 
 .header-logo[data-hidden-on-home-page] {
@@ -882,11 +882,11 @@ summary {
 @media screen and (width < 750px) {
   .header__columns .header-logo {
       grid-area: center;
-      transform: translate(110%, -22px);
+      transform: translate(50%, -32px);
       z-index: 99;
-      -webkit-transform: translate(110%, -22px);
-      -moz-transform: translate(110%, -22px);
-      -ms-transform: translate(110%, -22px);
-      -o-transform: translate(110%, -22px);
+      -webkit-transform: translate(50%, -32px);
+      -moz-transform: translate(50%, -32px);
+      -ms-transform: translate(50%, -32px);
+      -o-transform: translate(50%, -32px);
 }
 }
