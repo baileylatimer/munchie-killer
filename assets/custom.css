@@ -7,9 +7,9 @@
 
 
  :root {
-  --color-bg: #F0F0F0;
-  --color-contrast-high: #171717;
-  --color-contrast-higher: #000;
+  --color-bg: #1B1B1B;
+  --color-contrast-high: #26241F;
+  --color-contrast-higher: #D7CEC4;
   
   /* Border radius values */
   --border-radius-sm: 8px;
@@ -26,6 +26,7 @@
   --font-h4--size: 25px !important;
   --font-h5--size: 18px !important;
   --font-paragraph--size: 14px !important;
+  --border-radius-lg: 20px;
 }
 
 /* Color utility classes */
@@ -76,6 +77,13 @@ body {
   font-family: 'Neue Montreal';
   src: url('./NeueMontreal-Medium.otf') format('opentype');
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roslindale';
+  src: url('./RoslindaleDisplayCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -133,7 +141,7 @@ body {
    4. DIRECT ELEMENT STYLES
    ============================================ */
 
-/* Headings */
+/* Headings - General styles first */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6, jumbo-text, .ready, .menu-drawer__menu-item  {
   font-family: var(--font-header) !important;
@@ -141,14 +149,22 @@ h1, h2, h3, h4, h5, h6,
   font-feature-settings: 'liga' 1, 'kern' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-contrast-higher) !important
+}
+
+/* H1 Specific - Roslindale override (must come after general heading styles) */
+h1, .h1  {
+  font-family: 'Roslindale' !important;
+  font-weight: 700 !important;
 }
 
 /* Body Text */
-body {
+body, p {
   font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-contrast-higher);
 }
 
 .menu-drawer__menu-item {

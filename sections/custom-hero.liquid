@@ -84,8 +84,6 @@
     font-size: clamp(48px, 8vw, 120px);
     line-height: 0.9;
     text-transform: uppercase;
-    margin-bottom: 0;
-    margin-top: 0;
   
   }
 
@@ -213,6 +211,8 @@
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.00) 100%);
     }
   }
+
+  
 {% endstylesheet %}
 
 {% liquid
@@ -248,7 +248,7 @@
 
 <section 
   id="CustomHero-{{ section.id }}"
-  class="custom-hero{% if section.settings.invert_colors %} custom-hero--inverted{% endif %}"
+  class="custom-hero  br {% if section.settings.invert_colors %} custom-hero--inverted{% endif %}"
 >
   <div class="custom-hero__media-wrapper">
     <!-- Desktop Media -->
@@ -356,7 +356,7 @@
         {% endif %}
 
         {% if section.settings.headline != blank %}
-          <h1 class="custom-hero__headline">{{ section.settings.headline }}</h1>
+          <h1 class="custom-hero__headline tw-mb-6">{{ section.settings.headline }}</h1>
         {% endif %}
 
         {% if section.settings.description != blank %}
@@ -383,7 +383,7 @@
 {
   "name": "Custom Hero",
   "tag": "section",
-  "class": "custom-hero-wrapper section-wrapper",
+  "class": "custom-hero-wrapper section-wrapper tw-p-8",
   "settings": [
     {
       "type": "header",
