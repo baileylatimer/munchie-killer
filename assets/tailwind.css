@@ -554,10 +554,6 @@ video {
   display: none;
 }
 
-.tw-pointer-events-none {
-  pointer-events: none;
-}
-
 .tw-absolute {
   position: absolute;
 }
@@ -628,10 +624,6 @@ video {
   margin-top: 4rem;
 }
 
-.tw-mt-4 {
-  margin-top: 1rem;
-}
-
 .tw-block {
   display: block;
 }
@@ -654,10 +646,6 @@ video {
 
 .tw-h-full {
   height: 100%;
-}
-
-.tw-h-0 {
-  height: 0px;
 }
 
 .tw-min-h-\[400px\] {
@@ -827,26 +815,6 @@ video {
   text-align: justify;
 }
 
-.tw-text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.tw-text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.tw-text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.tw-text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .tw-text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -857,26 +825,36 @@ video {
   line-height: 2.25rem;
 }
 
-.tw-font-medium {
-  font-weight: 500;
+.tw-text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.tw-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .tw-font-bold {
   font-weight: 700;
 }
 
-.tw-leading-relaxed {
-  line-height: 1.625;
+.tw-font-medium {
+  font-weight: 500;
 }
 
-.tw-text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+.tw-leading-relaxed {
+  line-height: 1.625;
 }
 
 .tw-text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
+.tw-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
 .tw-underline {
@@ -897,20 +875,10 @@ video {
   transition-duration: 150ms;
 }
 
-.tw-transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .tw-transition-opacity {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.tw-duration-300 {
-  transition-duration: 300ms;
 }
 
 .tw-duration-500 {
@@ -942,21 +910,6 @@ video {
     padding-right: 2rem;
   }
 
-  .md\:tw-text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .md\:tw-text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  .md\:tw-text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .md\:tw-text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -965,6 +918,11 @@ video {
   .md\:tw-text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .md\:tw-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }
 
