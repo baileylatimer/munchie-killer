@@ -10,6 +10,7 @@
   --color-bg: #1B1B1B;
   --color-contrast-high: #26241F;
   --color-contrast-higher: #D7CEC4;
+  --color-primary: #C8AB69;
   
   /* Border radius values */
   --border-radius-sm: 8px;
@@ -32,6 +33,14 @@
 /* Color utility classes */
 .color-bg {
   color: var(--color-bg) !important;
+}
+
+.color-contrast-higher {
+  color: var(--color-contrast-higher) !important;
+}
+
+.border-contrast-higher {
+  border: 1px solid var(--color-contrast-higher)
 }
 
 .bg {
