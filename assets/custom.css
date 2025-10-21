@@ -10,7 +10,7 @@
   --color-bg: #1B1B1B;
   --color-contrast-high: #26241F;
   --color-contrast-higher: #D7CEC4;
-  --color-primary: #C8AB69;
+  --color-primary: #C8AB69 !important;
   
   /* Border radius values */
   --border-radius-sm: 8px;

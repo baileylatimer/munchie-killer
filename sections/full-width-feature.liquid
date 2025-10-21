@@ -42,7 +42,7 @@
       
       <!-- Background Image -->
       {{ section.settings.image | image_url: width: 1920 | image_tag: 
-         class: 'tw-w-full tw-h-full tw-object-cover', 
+         class: 'tw-w-full tw-h-full tw-object-cover br', 
          loading: 'lazy',
          alt: section.settings.heading }}
 
@@ -55,7 +55,7 @@
       <!-- Timeline Overlay -->
       {% if section.settings.show_timeline %}
         <div class="tw-absolute tw-bottom-8 tw-left-8 md:tw-bottom-12 md:tw-left-12">
-          <div class="tw-p-6 tw-rounded-lg tw-backdrop-blur-sm" style="background-color: var(--color-primary);">
+          <div class="tw-p-6 tw-rounded-lg tw-backdrop-blur-sm" style="background-color:rgba(0, 0, 0, 0.62);">
             <div class="tw-flex tw-items-center tw-gap-4">
               
               <!-- Gummy Image with Progress Ring -->

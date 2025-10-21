@@ -598,6 +598,18 @@ video {
   z-index: 10;
 }
 
+.tw-col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.tw-col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.tw-col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
 .tw-mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -606,6 +618,11 @@ video {
 .tw-my-0 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.tw--mx-4 {
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .tw-mb-12 {
@@ -656,6 +673,10 @@ video {
   display: flex;
 }
 
+.tw-grid {
+  display: grid;
+}
+
 .tw-hidden {
   display: none;
 }
@@ -686,6 +707,10 @@ video {
 
 .tw-h-\[400px\] {
   height: 400px;
+}
+
+.tw-h-px {
+  height: 1px;
 }
 
 .tw-min-h-\[400px\] {
@@ -745,6 +770,30 @@ video {
   cursor: pointer;
 }
 
+.tw-snap-x {
+  scroll-snap-type: x var(--tw-scroll-snap-strictness);
+}
+
+.tw-snap-mandatory {
+  --tw-scroll-snap-strictness: mandatory;
+}
+
+.tw-snap-start {
+  scroll-snap-align: start;
+}
+
+.tw-grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tw-grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.tw-grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
 .tw-flex-col {
   flex-direction: column;
 }
@@ -755,6 +804,10 @@ video {
 
 .tw-flex-wrap {
   flex-wrap: wrap;
+}
+
+.tw-items-start {
+  align-items: flex-start;
 }
 
 .tw-items-center {
@@ -789,8 +842,20 @@ video {
   gap: 1rem;
 }
 
+.tw-gap-6 {
+  gap: 1.5rem;
+}
+
 .tw-overflow-hidden {
   overflow: hidden;
+}
+
+.tw-overflow-x-auto {
+  overflow-x: auto;
+}
+
+.tw-scroll-smooth {
+  scroll-behavior: smooth;
 }
 
 .tw-whitespace-nowrap {
@@ -803,6 +868,10 @@ video {
 
 .tw-rounded-lg {
   border-radius: 0.5rem;
+}
+
+.tw-rounded-2xl {
+  border-radius: 1rem;
 }
 
 .tw-border {
@@ -907,6 +976,11 @@ video {
   padding-bottom: 0.75rem;
 }
 
+.tw-py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .tw-pb-16 {
   padding-bottom: 4rem;
 }
@@ -971,6 +1045,11 @@ video {
 .tw-text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.tw-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .tw-font-bold {
@@ -1061,6 +1140,14 @@ video {
 
   .md\:tw-left-12 {
     left: 3rem;
+  }
+
+  .md\:tw-grid {
+    display: grid;
+  }
+
+  .md\:tw-hidden {
+    display: none;
   }
 
   .md\:tw-h-\[580px\] {
