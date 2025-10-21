@@ -30,6 +30,16 @@
   --font-paragraph--size: 14px !important;
   --border-radius-lg: 20px;
 }
+@media(max-width:1023px) {
+:root {
+  --font-h1--size: 54px !important;
+  --font-h2--size: 28px !important;
+  --font-h4--size: 22px !important;
+  --font-h5--size: 16px !important;
+  --font-paragraph--size: 14px !important;
+  --border-radius-lg: 16px;
+}
+}
 
 /* Color utility classes */
 .color-bg {
