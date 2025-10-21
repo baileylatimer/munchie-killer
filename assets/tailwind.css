@@ -1005,6 +1005,10 @@ video {
   padding-top: 4rem;
 }
 
+.tw-pl-8 {
+  padding-left: 2rem;
+}
+
 .tw-text-left {
   text-align: left;
 }
@@ -1255,6 +1259,10 @@ video {
 
   .lg\:tw-pt-0 {
     padding-top: 0px;
+  }
+
+  .lg\:tw-pl-0 {
+    padding-left: 0px;
   }
 
   .lg\:tw-text-5xl {

@@ -1,4 +1,4 @@
-<div class="custom-what-to-expect tw-py-16 tw-px-4 md:tw-px-8 br" style="background-color: var(--color-primary);">
+<div class="custom-what-to-expect tw-py-16 tw-px-4 md:tw-px-8 br tw-pl-8" style="background-color: var(--color-primary);">
   <div class="tw-max-w-7xl tw-mx-auto">
     
     <!-- Desktop: Title + Cards in Same Row -->
@@ -63,7 +63,7 @@
       
       <!-- Mobile Title -->
       {% if section.settings.heading != blank %}
-        <h2 class="tw-text-3xl tw-font-bold tw-mb-8" style="color: var(--color-bg);">
+        <h2 class="tw-text-3xl tw-font-bold tw-mb-8" style="color: var(--color-bg) !important;">
           {{ section.settings.heading }}
         </h2>
       {% endif %}
@@ -82,19 +82,20 @@
                 
                 <!-- Timeline Label -->
                 {% if block.settings.timeline != blank %}
-                  <h5 class="tw-text-lg tw-font-medium tw-mb-4" style="color: var(--color-primary);">
+                  <h5 class="tw-text-lg tw-font-medium tw-mb-4" style="color: var(--color-primary)  !important;">
                     {{ block.settings.timeline }}
                   </h5>
                 {% endif %}
 
-                <!-- Divider Line -->
-                <div class="tw-w-full tw-h-px tw-mb-6" style="background-color: var(--color-primary); opacity: 0.3;"></div>
+         
 
                 <!-- Card Content -->
                 <div class="">
+                         <!-- Divider Line -->
+                <div class="tw-w-full tw-h-px tw-mb-6" style="background-color: var(--color-primary); opacity: 0.3;"></div>
                   <!-- Main Title -->
                   {% if block.settings.title != blank %}
-                    <h4 class="tw-text-xl tw-font-bold tw-mb-4" style="color: var(--color-primary);">
+                    <h4 class="tw-text-xl tw-font-bold tw-mb-4" style="color: var(--color-primary)  !important;">
                       {{ block.settings.title }}
                     </h4>
                   {% endif %}
