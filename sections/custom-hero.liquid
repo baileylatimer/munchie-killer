@@ -89,18 +89,6 @@
 
 
 
-  .custom-hero__button {
-    display: inline-block;
-    padding: 16px 48px;
-    font-family: var(--font-button);
-    font-weight: var(--font-weight-medium);
-    font-size: 14px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
 
   /* Default Colors (Light text on dark background) */
   .custom-hero:not(.custom-hero--inverted) {
@@ -135,11 +123,11 @@
   /* Mobile Styles */
   @media screen and (max-width: 749px) {
     .custom-hero {
-      min-height: 100vh;
+      min-height: calc(100vh - 180px);
     }
 
     .custom-hero__container {
-      height: 100vh;
+      height: calc(100vh - 180px);
       align-items: flex-start;
       padding-bottom: 40px;
     }
@@ -359,13 +347,13 @@
         {% endif %}
 
         {% if section.settings.description != blank %}
-          <p class="custom-hero__description tw-mb-8 h4">{{ section.settings.description }}</p>
+          <p class="custom-hero__description tw-mb-8 h5">{{ section.settings.description }}</p>
         {% endif %}
 
         {% if section.settings.button_label != blank and section.settings.button_url != blank %}
           <a 
             href="{{ section.settings.button_url }}" 
-            class="custom-hero__button"
+            class="custom-button"
             {% if section.settings.button_url contains 'http' %}
               target="_blank" rel="noopener"
             {% endif %}
