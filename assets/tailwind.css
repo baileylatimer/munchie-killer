@@ -1325,6 +1325,14 @@ video {
     padding-top: 0px;
   }
 
+  .lg\:tw-pt-8 {
+    padding-top: 2rem;
+  }
+
+  .lg\:tw-pt-4 {
+    padding-top: 1rem;
+  }
+
   .lg\:tw-text-5xl {
     font-size: 3rem;
     line-height: 1;
