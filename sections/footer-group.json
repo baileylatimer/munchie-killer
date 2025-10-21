@@ -2,6 +2,11 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "custom_footer_PAgwM7": {
+      "type": "custom-footer",
+      "name": "Custom Footer",
+      "settings": {}
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -87,7 +92,7 @@
                   "type": "menu",
                   "name": "t:names.menu",
                   "settings": {
-                    "menu": "company",
+                    "menu": "",
                     "heading": "Company",
                     "menu_spacing": 12,
                     "show_as_accordion": false,
@@ -108,7 +113,7 @@
                   "type": "menu",
                   "name": "t:names.menu",
                   "settings": {
-                    "menu": "help",
+                    "menu": "",
                     "heading": "Help",
                     "menu_spacing": 12,
                     "show_as_accordion": false,
@@ -129,7 +134,7 @@
                   "type": "menu",
                   "name": "t:names.menu",
                   "settings": {
-                    "menu": "support",
+                    "menu": "",
                     "heading": "Support",
                     "menu_spacing": 12,
                     "show_as_accordion": false,
@@ -412,6 +417,7 @@
         "group_tbFfTQ",
         "footer_utilities_KRaGcH"
       ],
+      "disabled": true,
       "name": "Footer",
       "settings": {
         "content_direction": "column",
@@ -434,6 +440,7 @@
     }
   },
   "order": [
+    "custom_footer_PAgwM7",
     "footer"
   ]
 }

@@ -10,11 +10,11 @@
         "button_label": "Order now",
         "button_url": "\/collections\/all",
         "desktop_media_type": "image",
-        "desktop_image": "shopify:\/\/shop_images\/content.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/hero--desktop_d4488ea6-d376-4672-a8d7-f87d9db5a6aa.jpg",
         "desktop_video_source": "file",
         "desktop_video_file_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/0a1c3fb89ffd422abf5384e7c823c48a.mp4",
         "mobile_media_type": "image",
-        "mobile_image": "shopify:\/\/shop_images\/content-1.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/hero--mobile.jpg",
         "mobile_video_source": "upload",
         "mobile_video_file_url": "",
         "show_gradient_overlay": true,
@@ -56,10 +56,146 @@
       ],
       "name": "Custom Feature Accordion",
       "settings": {}
+    },
+    "full_width_feature_AaUhYX": {
+      "type": "full-width-feature",
+      "blocks": {
+        "pill_3tkEfz": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "Berberine HCI — 500 mg"
+          }
+        },
+        "pill_pK7iGz": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "Chromium (as Picolinate) — 100 mcg"
+          }
+        },
+        "pill_aaUHU8": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "Apple Cider Vinegar Powder — 100 mg"
+          }
+        }
+      },
+      "block_order": [
+        "pill_3tkEfz",
+        "pill_pK7iGz",
+        "pill_aaUHU8"
+      ],
+      "name": "Full Width Feature",
+      "settings": {
+        "heading": "Clinically backed. Expert formulated.",
+        "description": "Each Munchie Killer gummy contains a precise 500 mg dose of berberine — the most studied natural compound for blood sugar regulation. When paired with chromium and apple cider vinegar, it supports healthy glucose metabolism and helps your body stay in fat-burning mode longer.",
+        "image": "shopify:\/\/shop_images\/feature-img.jpg",
+        "show_timeline": true,
+        "timeline_label": "Starts working in",
+        "timeline_duration": "1-2 days",
+        "gummy_image": "shopify:\/\/shop_images\/gummy.png"
+      }
+    },
+    "custom_what_to_expect_pwwHMf": {
+      "type": "custom-what-to-expect",
+      "blocks": {
+        "timeline_card_cMUXiy": {
+          "type": "timeline_card",
+          "settings": {
+            "timeline": "Day 1-2",
+            "title": "Balanced appetite",
+            "description": "Sugar cravings fade as blood sugar levels stabilize."
+          }
+        },
+        "timeline_card_naHtDp": {
+          "type": "timeline_card",
+          "settings": {
+            "timeline": "Week 2-3",
+            "title": "Steady energy",
+            "description": "Less snacking, better focus throughout the day."
+          }
+        },
+        "timeline_card_F8hhV8": {
+          "type": "timeline_card",
+          "settings": {
+            "timeline": "Month 2+",
+            "title": "Visible change",
+            "description": "Improved body and mood — control feels effortless."
+          }
+        }
+      },
+      "block_order": [
+        "timeline_card_cMUXiy",
+        "timeline_card_naHtDp",
+        "timeline_card_F8hhV8"
+      ],
+      "name": "Custom: What to Expect",
+      "settings": {
+        "heading": "What to expect"
+      }
+    },
+    "custom_feature_product_UXLAkC": {
+      "type": "custom-feature-product",
+      "name": "Custom Feature Product",
+      "settings": {
+        "heading": "One pouch. 30 days of focus.",
+        "description": "One pouch. 30 days of focus. Choose your flavor — or subscribe and save.",
+        "product": "berberine-gummies",
+        "show_subscription_option": true,
+        "subscription_price": "$50 or $45\/mo",
+        "button_text": "ORDER NOW",
+        "product_image": "shopify:\/\/shop_images\/munchie-killer-bag-cutout.png"
+      }
+    },
+    "custom_faq_RLkLGM": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_item_Wdikx3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will I lose weight with Munchie Killer?",
+            "answer": "Munchie Killer contains berberine, which helps regulate blood sugar levels and reduce cravings. By stabilizing glucose metabolism and improving insulin sensitivity, it naturally reduces appetite and helps prevent overeating. Many users experience weight management benefits as part of a healthy lifestyle, though individual results may vary."
+          }
+        },
+        "faq_item_ywXWJn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does it have caffeine or stimulants?",
+            "answer": "No, Munchie Killer is completely stimulant-free. It works through natural metabolic pathways rather than artificial stimulation. Berberine activates AMPK (your body's metabolic switch) naturally, providing sustained energy balance without jitters, crashes, or sleep disruption."
+          }
+        },
+        "faq_item_ygtaiM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I take it with other supplements?",
+            "answer": "Munchie Killer is generally safe to take with most supplements. However, if you're taking medications for diabetes, blood pressure, or other metabolic conditions, consult your healthcare provider first. Berberine can enhance the effects of blood sugar medications, so medical supervision may be recommended."
+          }
+        },
+        "faq_item_3cwnfU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When should I take it?",
+            "answer": "For best results, take one gummy 15-30 minutes before your largest meal of the day. This timing allows berberine to help regulate the blood sugar response from your meal. Consistency is key - taking it at the same time daily helps maintain stable blood sugar levels and appetite control."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_Wdikx3",
+        "faq_item_ywXWJn",
+        "faq_item_ygtaiM",
+        "faq_item_3cwnfU"
+      ],
+      "name": "Custom FAQ",
+      "settings": {
+        "heading": "FAQ"
+      }
     }
   },
   "order": [
     "custom_hero_JhYe8h",
-    "custom_feature_accordion_FFkMwp"
+    "custom_feature_accordion_FFkMwp",
+    "full_width_feature_AaUhYX",
+    "custom_what_to_expect_pwwHMf",
+    "custom_feature_product_UXLAkC",
+    "custom_faq_RLkLGM"
   ]
 }
