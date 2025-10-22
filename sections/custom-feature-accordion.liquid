@@ -75,6 +75,28 @@
   </div>
 </div>
 
+<style>
+  /* Hardware acceleration and Safari optimization */
+  .accordion-title-active,
+  .accordion-label,
+  .accordion-description,
+  .accordion-image {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Prevent layout shifts during transitions */
+  .accordion-container {
+    min-height: 300px;
+  }
+  
+  .accordion-item {
+    transition: transform 0.3s ease;
+  }
+</style>
+
 <script>
 (function() {
   'use strict';
@@ -95,54 +117,13 @@
     let autoRotateInterval;
     let isAnimating = false;
 
-    // Function to split text into animated spans
-    function splitTextForAnimation(element) {
-      const text = element.textContent;
-      const chars = text.split('');
-      element.innerHTML = chars.map(char => 
-        char === ' ' ? '<span class="char">&nbsp;</span>' : `<span class="char">${char}</span>`
-      ).join('');
-      return element.querySelectorAll('.char');
-    }
-
-    // Function to restore normal text
-    function restoreNormalText(element, originalText) {
-      element.innerHTML = originalText;
-    }
-
-    // Store original text content for all elements
-    const originalTexts = new Map();
-    accordionItems.forEach((item, index) => {
-      const labelText = item.querySelector('.label-text');
-      const titleText = item.querySelector('.title-text');
-      
-      if (labelText) originalTexts.set(labelText, labelText.textContent);
-      if (titleText) originalTexts.set(titleText, titleText.textContent);
-    });
-
-    // Initialize - ensure all text is visible in normal form
-    // Don't split text initially, keep it as normal readable text
-
-    // Function to switch to a specific tab with GSAP animations
+    // Optimized function to switch tabs with minimal layout impact
     function switchTab(tabIndex) {
       if (isAnimating || tabIndex === currentTab) return;
       
       isAnimating = true;
       const tl = gsap.timeline({
         onComplete: () => {
-          // Restore normal text after animations complete
-          accordionItems.forEach((item, index) => {
-            const labelText = item.querySelector('.label-text');
-            const titleText = item.querySelector('.title-text');
-            
-            if (labelText && originalTexts.has(labelText)) {
-              restoreNormalText(labelText, originalTexts.get(labelText));
-            }
-            if (titleText && originalTexts.has(titleText)) {
-              restoreNormalText(titleText, originalTexts.get(titleText));
-            }
-          });
-          
           isAnimating = false;
           currentTab = tabIndex;
         }
@@ -152,95 +133,55 @@
       if (currentTab !== tabIndex) {
         const currentItem = accordionItems[currentTab];
         const currentTitleActive = currentItem.querySelector('.accordion-title-active');
-        const currentTitleText = currentItem.querySelector('.title-text');
-        const currentDescription = currentItem.querySelector('.accordion-description');
         const currentLabel = currentItem.querySelector('.accordion-label');
 
-        // Split current active title for animation
-        const currentTitleChars = splitTextForAnimation(currentTitleText);
-
-        // Fade out current active title with letter animation
-        tl.to(currentTitleChars, {
-          duration: 0.3,
+        // Simple fade out with transform for hardware acceleration
+        tl.to(currentTitleActive, {
+          duration: 0.25,
           opacity: 0,
-          y: -10,
-          stagger: 0.02,
-          ease: "power2.in"
+          transform: "translate3d(0, -10px, 0)",
+          ease: "power2.in",
+          onComplete: () => {
+            gsap.set(currentTitleActive, { display: "none" });
+            gsap.set(currentLabel, { display: "block" });
+          }
         }, 0);
-
-        // Fade out description
-        tl.to(currentDescription, {
-          duration: 0.2,
-          opacity: 0,
-          ease: "power2.in"
-        }, 0.1);
-
-        // Switch display states - hide active, show label
-        tl.set(currentTitleActive, {
-          display: "none"
-        }, 0.4);
-
-        tl.set(currentLabel, {
-          display: "block"
-        }, 0.4);
       }
 
       // Animate in new active item
       const newItem = accordionItems[tabIndex];
       const newTitleActive = newItem.querySelector('.accordion-title-active');
-      const newTitleText = newItem.querySelector('.title-text');
-      const newDescription = newItem.querySelector('.accordion-description');
       const newLabel = newItem.querySelector('.accordion-label');
 
-      // Switch display states - hide label, show active
-      tl.set(newLabel, {
-        display: "none"
-      }, 0.5);
-
-      tl.set(newTitleActive, {
-        display: "block"
-      }, 0.5);
-
-      // Split new title text for animation
+      // Switch display states immediately for smoother transition
       tl.call(() => {
-        const newTitleChars = splitTextForAnimation(newTitleText);
-        
-        // Set initial state for animation
-        gsap.set(newTitleChars, {
-          opacity: 0,
-          y: 20
+        gsap.set(newLabel, { display: "none" });
+        gsap.set(newTitleActive, { 
+          display: "block", 
+          opacity: 0, 
+          transform: "translate3d(0, 20px, 0)" 
         });
+      }, [], 0.3);
 
-        // Animate in new title with letter animation
-        gsap.to(newTitleChars, {
-          duration: 0.4,
-          opacity: 1,
-          y: 0,
-          stagger: 0.03,
-          ease: "power2.out"
-        });
-      }, [], 0.6);
-
-      // Animate in description
-      tl.fromTo(newDescription, {
-        opacity: 0
-      }, {
+      // Simple fade in with transform
+      tl.to(newTitleActive, {
         duration: 0.4,
         opacity: 1,
+        transform: "translate3d(0, 0, 0)",
         ease: "power2.out"
-      }, 0.8);
+      }, 0.35);
 
-      // Update images
+      // Update images with crossfade
       accordionImages.forEach((image, index) => {
         if (index === tabIndex) {
           tl.to(image, {
-            duration: 0.5,
+            duration: 0.4,
             opacity: 1,
             ease: "power2.inOut"
-          }, 0.3);
+          }, 0.2);
         } else if (index === currentTab) {
           tl.to(image, {
-            duration: 0.5,
+            duration: 0.3,
             opacity: 0,
             ease: "power2.inOut"
           }, 0);
@@ -255,7 +196,7 @@
           const nextTab = (currentTab + 1) % accordionItems.length;
           switchTab(nextTab);
         }
-      }, 4000); // 4 seconds to allow animations to complete
+      }, 4000);
     }
 
     // Manual click handlers

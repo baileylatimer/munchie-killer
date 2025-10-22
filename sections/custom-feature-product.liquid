@@ -139,7 +139,7 @@
 
       <!-- Product Image -->
       {% if section.settings.product_image != blank %}
-        <div class="tw-relative tw-z-10" style="height: 545px;">
+        <div class="tw-relative tw-z-10 product-image-feature">
           {{ section.settings.product_image | image_url: width: 800 | image_tag: 
              class: 'tw-h-full tw-w-auto tw-object-contain', 
              loading: 'lazy',
