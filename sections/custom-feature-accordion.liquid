@@ -92,6 +92,14 @@
     min-height: 300px;
   }
   
+  /* Fixed height on mobile to prevent jumping */
+  @media screen and (max-width: 749px) {
+    .accordion-container {
+      height: 364px;
+      overflow: hidden;
+    }
+  }
+  
   .accordion-item {
     transition: transform 0.3s ease;
   }
