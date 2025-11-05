@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "custom_hero_JhYe8h": {
@@ -8,13 +17,13 @@
         "headline": "Stop cravings before they start.",
         "description": "Doctor-formulated berberine gummies that balance blood sugar, silence cravings, and help you stay in control — naturally.",
         "button_label": "Order now",
-        "button_url": "\/collections\/all",
+        "button_url": "/collections/all",
         "desktop_media_type": "image",
-        "desktop_image": "shopify:\/\/shop_images\/hero--desktop_d4488ea6-d376-4672-a8d7-f87d9db5a6aa.jpg",
+        "desktop_image": "shopify://shop_images/hero--desktop_d4488ea6-d376-4672-a8d7-f87d9db5a6aa.jpg",
         "desktop_video_source": "file",
-        "desktop_video_file_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/0a1c3fb89ffd422abf5384e7c823c48a.mp4",
+        "desktop_video_file_url": "https://cdn.shopify.com/videos/c/o/v/0a1c3fb89ffd422abf5384e7c823c48a.mp4",
         "mobile_media_type": "image",
-        "mobile_image": "shopify:\/\/shop_images\/hero--mobile.jpg",
+        "mobile_image": "shopify://shop_images/hero--mobile.jpg",
         "mobile_video_source": "upload",
         "mobile_video_file_url": "",
         "show_gradient_overlay": true,
@@ -29,7 +38,7 @@
           "settings": {
             "title": "Turns hunger off — the natural way.",
             "description": "Berberine activates your body's metabolic switch (AMPK), improving insulin sensitivity and stabilizing blood sugar — so your appetite stays calm and controlled all day.",
-            "image": "shopify:\/\/shop_images\/Frame_705.jpg"
+            "image": "shopify://shop_images/Frame_705.jpg"
           }
         },
         "accordion_item_mXcWrz": {
@@ -37,7 +46,7 @@
           "settings": {
             "title": "Doctor-formulated for real results.",
             "description": "Our formula is backed by clinical research and developed by medical professionals to ensure maximum effectiveness and safety.",
-            "image": "shopify:\/\/shop_images\/Frame_705.jpg"
+            "image": "shopify://shop_images/Frame_705.jpg"
           }
         },
         "accordion_item_WR8egX": {
@@ -45,7 +54,7 @@
           "settings": {
             "title": "Lose cravings, not energy.",
             "description": "Unlike other solutions that leave you feeling drained, our approach maintains your natural energy levels while eliminating unwanted cravings.",
-            "image": "shopify:\/\/shop_images\/Frame_705.jpg"
+            "image": "shopify://shop_images/Frame_705.jpg"
           }
         }
       },
@@ -88,11 +97,11 @@
       "settings": {
         "heading": "Clinically backed. Expert formulated.",
         "description": "Each Munchie Killer gummy contains a precise 500 mg dose of berberine — the most studied natural compound for blood sugar regulation. When paired with chromium and apple cider vinegar, it supports healthy glucose metabolism and helps your body stay in fat-burning mode longer.",
-        "image": "shopify:\/\/shop_images\/feature-img.jpg",
+        "image": "shopify://shop_images/feature-img.jpg",
         "show_timeline": true,
         "timeline_label": "Starts working in",
         "timeline_duration": "1-2 days",
-        "gummy_image": "shopify:\/\/shop_images\/gummy.png"
+        "gummy_image": "shopify://shop_images/gummy.png"
       }
     },
     "custom_what_to_expect_pwwHMf": {
@@ -141,9 +150,9 @@
         "description": "One pouch. 30 days of focus. Choose your flavor — or subscribe and save.",
         "product": "berberine-gummies",
         "show_subscription_option": true,
-        "subscription_price": "$50 or $45\/mo",
-        "button_text": "ORDER NOW",
-        "product_image": "shopify:\/\/shop_images\/munchie-killer-bag-cutout.png"
+        "subscription_price": "$50 or $45/mo",
+        "button_text": "Pre-ORDER NOW",
+        "product_image": "shopify://shop_images/munchie-killer-bag-cutout.png"
       }
     },
     "custom_faq_RLkLGM": {
